@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--Divider Line-->
+    <declare-styleable name="DividerLinearLayout">
+        <attr name="android:dividerHeight" />
+        <attr name="android:divider" />
+        <attr name="dividerWidth" format="reference|dimension" />
+        <attr name="dividerTopMargin" format="reference|dimension" />
+        <attr name="dividerBottomMargin" format="reference|dimension" />
+        <attr name="dividerLeftMargin" format="reference|dimension" />
+        <attr name="dividerRightMargin" format="reference|dimension" />
+        <attr name="dividerHorMargin" format="reference|dimension" />
+        <attr name="dividerVerMargin" format="reference|dimension" />
+        <attr name="drawStart" format="boolean" />
+        <attr name="drawEnd" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="TagLayout">
+        <attr name="android:horizontalSpacing" />
+        <attr name="android:verticalSpacing" />
+        <attr name="singleChoice" format="boolean" />
+        <attr name="cancelable" format="boolean" />
+        <attr name="singleLine" format="boolean" />
+        <attr name="tagMode">
+            <flag name="adaptable" value="0" />
+            <flag name="fixed" value="1" />
+        </attr>
+        <attr name="android:numColumns" />
+    </declare-styleable>
+
+    <attr name="shape" >
+        <flag name="Square" value="1" />
+        <flag name="Round" value="2" />
+    </attr>
+
+    <declare-styleable name="AsyncImageView">
+        <attr name="shape" />
+    </declare-styleable>
+
+</resources>

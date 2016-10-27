@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="transparent_10_percent">#1A000000</color>
+
+    <color name="transparent_20_percent">#31000000</color>
+
+    <color name="transparent_30_percent">#65000000</color>
+
+    <!--浅灰，用于整体的背景色-->
+    <color name="gray_light">#F0F0F0</color>
+    <!--浅灰-->
+    <color name="gray_light_deep">#E4E4E4</color>
+    <!--灰色-->
+    <color name="gray">#CCCCCC</color>
+    <!-- UI灰5-->
+    <color name="gray_dark">#999999</color>
+    <!-- UI灰6-->
+    <color name="gray_dark_deep">#666666</color>
+
+    <!--纯白-->
+    <color name="white">#FFFFFF</color>
+    <!--浅白-->
+    <color name="white_light">#F7F7F7</color>
+
+    <!--纯黑-->
+    <color name="black">#ff000000</color>
+    <!--浅黑色-->
+    <color name="black_light">#333333</color>
+
+    <!--分割线-->
+    <!--列表分割线-->
+    <color name="divider_list_color">@color/gray_light_deep</color>
+
+    <!--背景色-->
+    <!--整体背景色-->
+    <color name="bg_color">@color/white</color>
+    <!--列表item背景色-->
+    <color name="bg_list_item_color">@color/white</color>
+    <!--列表的背景色-->
+    <color name="bg_list_color">@color/white</color>
+
+    <!-- basic colors -->
+    <color name="blue">#3791FF</color>
+    <color name="blue_dark">#3791FF</color>
+    <color name="blue_light">#3D94FF</color>
+    <color name="orange">#FFB163</color>
+    <color name="yellow">#FFCC00</color>
+    <color name="red">#FF7B65</color>
+    <color name="pink">#E969D0</color>
+    <color name="purple">#A051DA</color>
+    <color name="green">#00C600</color>
+
+
+</resources>

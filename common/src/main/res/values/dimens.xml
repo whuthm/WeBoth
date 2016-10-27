@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- font sizes -->
+    <dimen name="font_huge">30sp</dimen>
+    <dimen name="font_larger">24sp</dimen>
+    <dimen name="font_large">18sp</dimen>
+    <dimen name="font_normal">15sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_smaller">8sp</dimen>
+
+    <!-- typical spacing between two views -->
+    <dimen name="spacing_huger">60dp</dimen>
+    <dimen name="spacing_huge">40dp</dimen>
+    <dimen name="spacing_larger">24dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_normal">12dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_smaller">6dp</dimen>
+    <dimen name="spacing_tiny">4dp</dimen>
+
+    <dimen name="icon_size">48dp</dimen>
+
+    <dimen name="action_bar_default_size">48dp</dimen>
+
+    <dimen name="item_title_indicator_width">3dp</dimen>
+    <dimen name="item_title_indicator_height">16dp</dimen>
+
+    <dimen name="block_ver_spacing">8dp</dimen>
+
+    <dimen name="radius_dp">3dp</dimen>
+    <dimen name="stroke_width">1dp</dimen>
+
+</resources>

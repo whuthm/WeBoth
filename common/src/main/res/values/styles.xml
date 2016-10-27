@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/ActivityDefaultTransitionAnimation</item>
+    </style>
+
+    <style name="ActivityDefaultTransitionAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_slide_in_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_slide_out_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_slide_in_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_slide_out_to_right</item>
+    </style>
+
+    <style name="SubmitBtnStyle">
+        <item name="android:padding">@dimen/spacing_normal</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SubmitBtnRedStyle" parent="SubmitBtnStyle">
+        <item name="android:background">@drawable/shape_corner_rect_red_solid</item>
+    </style>
+
+    <style name="SubmitBtnBlueStyle" parent="SubmitBtnStyle">
+        <item name="android:background">@drawable/shape_corner_rect_blue_solid</item>
+    </style>
+
+    <style name="SubmitBtnOrangeStyle" parent="SubmitBtnStyle">
+        <item name="android:background">@drawable/shape_corner_rect_orange_solid</item>
+    </style>
+</resources>
