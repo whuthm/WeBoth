@@ -1,9 +1,9 @@
 package com.nm.base.spf;
 
+import com.nm.base.log.Logger;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import com.nm.common.log.Logger;
 
 /**
  * Created by huangming on 2016/10/3.

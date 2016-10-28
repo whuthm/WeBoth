@@ -36,7 +36,7 @@
 
     <!--背景色-->
     <!--整体背景色-->
-    <color name="bg_color">@color/white</color>
+    <color name="bg_color">@color/gray_light</color>
     <!--列表item背景色-->
     <color name="bg_list_item_color">@color/white</color>
     <!--列表的背景色-->

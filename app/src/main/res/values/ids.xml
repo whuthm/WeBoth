@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="tab_remain" type="id" />
+    <item name="tab_icon" type="id" />
+    <item name="tab_text" type="id" />
+
+    <item name="item_icon" type="id" />
+    <item name="item_sub_icon" type="id" />
+    <item name="item_title" type="id" />
+    <item name="item_sub_title" type="id" />
+    <item name="item_remain" type="id" />
+    <item name="item_summary" type="id" />
+    <item name="item_hint" type="id" />
+
+</resources>

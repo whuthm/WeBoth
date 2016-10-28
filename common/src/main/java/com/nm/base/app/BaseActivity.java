@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import com.nm.base.R;
 import com.nm.base.log.Logger;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by huangming on 2016/9/25. 必须使用主题BaseTheme
  */
@@ -48,6 +50,8 @@ public class BaseActivity extends AppCompatActivity {
 
         mActionBarHelper = new ActionBarHelper();
         mActionBarHelper.onAttach(this);
+
+        ButterKnife.bind(this);
 
         initView();
     }
@@ -191,6 +195,7 @@ public class BaseActivity extends AppCompatActivity {
         ActivityStack.pop(this);
         mFragHelper.onDetach();
         mActionBarHelper.onDetach();
+        ButterKnife.unbind(this);
     }
 
     @Override

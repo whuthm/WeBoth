@@ -7,8 +7,10 @@ package com.nm.both.domain;
 public class MemoryInfo {
 
     private String id;
+    private int groupId;
     private long createdTime;
     private long updatedTime;
     private String content;
+    private String title;
 
 }
