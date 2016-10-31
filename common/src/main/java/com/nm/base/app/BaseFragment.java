@@ -1,6 +1,5 @@
 package com.nm.base.app;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;

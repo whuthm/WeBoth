@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TableView-->
+    <declare-styleable name="TableView">
+        <attr name="border" format="color|reference" />
+        <attr name="borderSize" format="dimension|reference" />
+        <attr name="borderWidth" format="reference|dimension" />
+        <attr name="borderHeight" format="reference|dimension" />
+    </declare-styleable>
+
+</resources>
