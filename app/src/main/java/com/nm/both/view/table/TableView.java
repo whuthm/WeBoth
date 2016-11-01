@@ -37,9 +37,8 @@ public class TableView extends LinearLayout {
         
         setWillNotDraw(false);
         
-        final TypedArray a = context.obtainStyledAttributes(attrs,
-                com.nm.base.R.styleable.TableView);
-        mBorderDrawable = a.getDrawable(com.nm.base.R.styleable.TableView_border);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TableView);
+        mBorderDrawable = a.getDrawable(R.styleable.TableView_border);
         final int borderSize = a.getDimensionPixelSize(R.styleable.TableView_borderSize,
                 0);
         mBorderWidth = a.getDimensionPixelSize(R.styleable.TableView_borderWidth,
@@ -49,14 +48,12 @@ public class TableView extends LinearLayout {
         a.recycle();
         
         ensureHeaderAndItemContainer();
-        mItemContainer.setScrollChangeListener(mScrollChangeListener);
+        mItemContainer.setHVScrollListener(mHVScrollListener);
     }
     
-    private HVScrollView.ScrollChangeListener mScrollChangeListener = new HVScrollView.ScrollChangeListener() {
+    private HVScrollView.HVScrollListener mHVScrollListener = new HVScrollView.HVScrollListener() {
         @Override
-        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX,
-                int oldScrollY) {
-            
+        public void onScrollChange(HVScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
         }
     };
     
@@ -100,7 +97,7 @@ public class TableView extends LinearLayout {
         super.setOrientation(orientation);
         ensureHeaderAndItemContainer();
         mHeaderContainer.setOrientation(orientation);
-        mItemContainer.setOrientation(orientation);
+        //mItemContainer.setOrientation(orientation);
         
         fillViews();
     }

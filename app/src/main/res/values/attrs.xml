@@ -4,8 +4,19 @@
     <declare-styleable name="TableView">
         <attr name="border" format="color|reference" />
         <attr name="borderSize" format="dimension|reference" />
-        <attr name="borderWidth" format="reference|dimension" />
+        <attr name="borderWidth" />
         <attr name="borderHeight" format="reference|dimension" />
+    </declare-styleable>
+
+    <attr name="scrollMode">
+        <flag name="both" value="0x0" />
+        <flag name="horizontal" value="0x1" />
+        <flag name="vertical" value="0x2" />
+        <flag name="selective" value="0x3" />
+    </attr>
+
+    <declare-styleable name="HVScrollView">
+        <attr name="scrollMode" />
     </declare-styleable>
 
 </resources>

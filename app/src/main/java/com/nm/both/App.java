@@ -12,7 +12,7 @@ public class App extends BaseApplication {
     protected void onCreateOnMainThread() {
         super.onCreateOnMainThread();
         ServiceFactory.loadServices();
-        ServiceFactory.getNetworkService().init(this);
+        //ServiceFactory.getNetworkService().init(this);
     }
     
     @Override
