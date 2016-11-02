@@ -60,7 +60,7 @@ public class HVScrollView extends FrameLayout {
      */
     private int mLastMotionY;
     
-    private final ScrollMode mScrollMode;
+    private ScrollMode mScrollMode;
     private ScrollMode mCurrentMode;
     
     public HVScrollView(Context context) {
@@ -78,7 +78,7 @@ public class HVScrollView extends FrameLayout {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.HVScrollView, 0,
                 0);
         mScrollMode = ScrollMode
-                .mapIntToValue(a.getInteger(R.styleable.HVScrollView_scrollMode, 3));
+                .mapIntToValue(a.getInteger(R.styleable.HVScrollView_scrollMode, 0));
         a.recycle();
         
         initScrollView();
@@ -94,7 +94,12 @@ public class HVScrollView extends FrameLayout {
         mMinimumVelocity = configuration.getScaledMinimumFlingVelocity();
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
     }
-    
+
+
+    public void setScrollMode(ScrollMode mode) {
+        this.mScrollMode = mode;
+    }
+
     public void setHVScrollListener(HVScrollListener hvScrollListener) {
         this.mHVScrollListener = hvScrollListener;
     }

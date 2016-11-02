@@ -2,19 +2,56 @@ package com.nm.both.view.table;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 /**
  * Created by huangming on 2016/10/31.
  */
 
-public abstract class TableAdapter {
+public class TableAdapter extends TableCellAdapter {
 
-    public abstract int getItemCount();
+    public static final int ORIENTATION_HORIZONTAL = LinearLayout.HORIZONTAL;
+    public static final int ORIENTATION_VERTICAL = LinearLayout.VERTICAL;
 
-    public abstract int getHeaderCount();
+    private final TableCellAdapter mHorizontalHeaderAdapter;
+    private final TableCellAdapter mVerticalHeaderAdapter;
+    private final TableCellAdapter mDataAdapter;
+    
+    public TableAdapter(TableCellAdapter horizontalHeaderAdapter,
+            TableCellAdapter verticalHeaderAdapter, TableCellAdapter dataAdapter) {
+        this.mHorizontalHeaderAdapter = horizontalHeaderAdapter;
+        this.mVerticalHeaderAdapter = verticalHeaderAdapter;
+        this.mDataAdapter = dataAdapter;
+    }
+    
+    TableCellAdapter getHorizontalHeaderAdapter() {
+        return mHorizontalHeaderAdapter;
+    }
+    
+    TableCellAdapter getVerticalHeaderAdapter() {
+        return mVerticalHeaderAdapter;
+    }
+    
+    TableCellAdapter getDataAdapter() {
+        return mDataAdapter;
+    }
 
-    public abstract View getHeaderUnitView(int headerPosition, ViewGroup parent);
+    public int getOrientation() {
+        return ORIENTATION_HORIZONTAL;
+    }
 
-    public abstract View getItemUnitView(int itemPosition, ViewGroup parent);
+    @Override
+    public int getCountX() {
+        return 0;
+    }
 
+    @Override
+    public int getCountY() {
+        return 0;
+    }
+
+    @Override
+    public View getView(int cellX, int cellY, ViewGroup parent) {
+        return null;
+    }
 }
