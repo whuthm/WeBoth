@@ -23,10 +23,6 @@ public class HVScrollView extends FrameLayout {
     
     private static final String TAG = "HVScrollView";
     
-    /**
-     * Sentinel value for no current active pointer. Used by
-     * {@link #mActivePointerId}.
-     */
     private static final int INVALID_POINTER = -1;
     
     private int mTouchSlop;
@@ -39,15 +35,8 @@ public class HVScrollView extends FrameLayout {
     
     private boolean mIsBeingDragged = false;
     
-    /**
-     * ID of the active pointer. This is used to retain consistency during
-     * drags/flings if multiple pointers are used.
-     */
     private int mActivePointerId = INVALID_POINTER;
     
-    /**
-     * Determines speed during touch scrolling
-     */
     private VelocityTracker mVelocityTracker;
     
     /**
@@ -94,12 +83,11 @@ public class HVScrollView extends FrameLayout {
         mMinimumVelocity = configuration.getScaledMinimumFlingVelocity();
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
     }
-
-
+    
     public void setScrollMode(ScrollMode mode) {
         this.mScrollMode = mode;
     }
-
+    
     public void setHVScrollListener(HVScrollListener hvScrollListener) {
         this.mHVScrollListener = hvScrollListener;
     }
@@ -147,6 +135,7 @@ public class HVScrollView extends FrameLayout {
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
+        Log.e(TAG, "onScrollChanged " + l + ", " + t);
         if (mHVScrollListener != null) {
             mHVScrollListener.onScrollChange(this, l, t, oldl, oldt);
         }
@@ -190,9 +179,6 @@ public class HVScrollView extends FrameLayout {
                 & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
         final int pointerId = ev.getPointerId(pointerIndex);
         if (pointerId == mActivePointerId) {
-            // This was our active pointer going up. Choose a new
-            // active pointer and adjust accordingly.
-            // TODO: Make this decision more intelligent.
             final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
             mLastMotionX = (int) ev.getY(newPointerIndex);
             mLastMotionY = (int) ev.getY(newPointerIndex);
@@ -216,9 +202,6 @@ public class HVScrollView extends FrameLayout {
             return true;
         }
         
-        /*
-         * Don't try to intercept touch if we can't scroll anyway.
-         */
         if ((getScrollY() == 0 && !canScrollVertically(1))
                 || (getScrollX() == 0 && !canScrollHorizontally(1))) {
             return false;
@@ -228,8 +211,6 @@ public class HVScrollView extends FrameLayout {
             case MotionEvent.ACTION_MOVE: {
                 final int activePointerId = mActivePointerId;
                 if (activePointerId == INVALID_POINTER) {
-                    // If we don't have a valid id, the touch down wasn't on
-                    // content.
                     break;
                 }
                 
@@ -270,17 +251,13 @@ public class HVScrollView extends FrameLayout {
                     break;
                 }
                 
-                /*
-                 * Remember location of down touch. ACTION_DOWN always refers to
-                 * pointer index 0.
-                 */
                 mLastMotionX = x;
                 mLastMotionY = y;
                 mActivePointerId = ev.getPointerId(0);
                 
                 initOrResetVelocityTracker();
                 mVelocityTracker.addMovement(ev);
-
+                
                 if (!mScroller.isFinished()) {
                     mScroller.abortAnimation();
                 }
@@ -303,10 +280,6 @@ public class HVScrollView extends FrameLayout {
                 break;
         }
         
-        /*
-         * The only time we want to intercept motion events is if we are in the
-         * drag mode.
-         */
         return mIsBeingDragged;
     }
     
@@ -325,12 +298,11 @@ public class HVScrollView extends FrameLayout {
                 if (getChildCount() == 0) {
                     return false;
                 }
-
+                
                 if (!mScroller.isFinished()) {
                     mScroller.abortAnimation();
                 }
                 
-                // Remember where the motion event started
                 mLastMotionX = (int) ev.getX();
                 mLastMotionY = (int) ev.getY();
                 mActivePointerId = ev.getPointerId(0);
@@ -361,16 +333,13 @@ public class HVScrollView extends FrameLayout {
                 Log.e(TAG,
                         "onTouchEvent : " + deltaX + ", " + deltaY + ", x=" + x + ", y="
                                 + y + ", mLastMotionX=" + mLastMotionX + ", mLastMotionY="
-                                + mLastMotionY+ ", currentMode=" + mCurrentMode);
+                                + mLastMotionY + ", currentMode=" + mCurrentMode);
                 if (mIsBeingDragged) {
                     mLastMotionX = x;
                     mLastMotionY = y;
-                    if (overScrollBy(canHScroll() ? deltaX : 0, canVScroll() ? deltaY : 0,
+                    overScrollBy(canHScroll() ? deltaX : 0, canVScroll() ? deltaY : 0,
                             getScrollX(), getScrollY(), getHScrollRange(),
-                            getVScrollRange(), 0, 0, true)) {
-                        // Break our velocity if we hit a scroll barrier.
-                        mVelocityTracker.clear();
-                    }
+                            getVScrollRange(), 0, 0, true);
                 }
                 break;
             case MotionEvent.ACTION_UP:
@@ -423,7 +392,7 @@ public class HVScrollView extends FrameLayout {
         vtev.recycle();
         return true;
     }
-    
+
     @Override
     protected void onOverScrolled(int scrollX, int scrollY, boolean clampedX,
             boolean clampedY) {
@@ -521,16 +490,6 @@ public class HVScrollView extends FrameLayout {
     protected void measureChildWithMargins(View child, int parentWidthMeasureSpec,
             int widthUsed, int parentHeightMeasureSpec, int heightUsed) {
         measureChild(child, parentWidthMeasureSpec, parentHeightMeasureSpec);
-    }
-    
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.e(TAG, "parent : " + getMeasuredWidth() + ", " + getMeasuredHeight());
-        if (getChildCount() > 0) {
-            Log.e(TAG, "child : " + getChildAt(0).getMeasuredWidth() + ", "
-                    + getChildAt(0).getMeasuredHeight());
-        }
     }
     
     public interface HVScrollListener {

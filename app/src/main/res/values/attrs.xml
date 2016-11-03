@@ -3,9 +3,11 @@
     <!--TableView-->
     <declare-styleable name="TableView">
         <attr name="border" format="color|reference" />
-        <attr name="borderSize" format="dimension|reference" />
-        <attr name="borderWidth" />
-        <attr name="borderHeight" format="reference|dimension" />
+        <attr name="sizeBorder" format="dimension|reference" />
+        <attr name="gap" format="color|reference" />
+        <attr name="sizeGap" format="dimension|reference" />
+        <attr name="widthGap" format="reference|dimension"  />
+        <attr name="heightGap" format="reference|dimension" />
     </declare-styleable>
 
     <attr name="scrollMode">

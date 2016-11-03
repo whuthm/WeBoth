@@ -7,6 +7,7 @@ import com.facebook.common.internal.Supplier;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.cache.MemoryCacheParams;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.nm.base.crash.GlobalCrashHandler;
 import com.nm.base.util.AppUtils;
 import com.nm.base.util.FileUtils;
 import com.nm.base.util.ToastWrapper;
@@ -21,6 +22,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         ToastWrapper.init(this);
+        GlobalCrashHandler.INSTANCE.init();
         if (AppUtils.isMainProcess(this)) {
             // fresco初始化
             Fresco.initialize(this, buildFrescoConfig());
